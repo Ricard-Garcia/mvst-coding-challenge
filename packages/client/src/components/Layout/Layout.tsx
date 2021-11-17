@@ -9,7 +9,7 @@ import Main from "../../components/Main";
 
 export default function Layout() {
   return (
-    <div id="layoutComponent" className="d-flex flex-column bg-dark ft-light">
+    <div id="layoutComponent" className="d-flex flex-column bg-light ft-dark">
       <Header />
       <Main />
     </div>
