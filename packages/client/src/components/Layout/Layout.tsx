@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // Utils
 import { setTheme } from "../../utils/theme";
-import { voidFunction } from "../../utils/types";
+import { VoidFunction } from "../../utils/types";
 
 // Styles
 import "./Layout.scss";
@@ -15,7 +15,8 @@ export default function Layout() {
   const [isLight, setIsLight] = useState<boolean>(true);
   const [primary, secondary] = setTheme(isLight);
 
-  const handleTheme: voidFunction = (): void => {
+  // Change theme
+  const handleTheme: VoidFunction = () => {
     setIsLight(!isLight);
   };
 

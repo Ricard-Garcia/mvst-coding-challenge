@@ -26,13 +26,13 @@ export interface ThemeProp {
 /**
  * Void function type
  */
-export type voidFunction = () => void;
+export type VoidFunction = () => void;
 
 /**
  * Void function interface
  */
 export interface VoidFunctionProp {
-  handleTheme: voidFunction;
+  handleTheme: VoidFunction;
 }
 
 /**
