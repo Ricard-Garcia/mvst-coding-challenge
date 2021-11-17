@@ -1,11 +1,12 @@
 import React from "react";
-import { BsSun, BsMoon } from "react-icons/bs";
 
+// Utils
 import { HeaderProps } from "../../utils/types";
 
-import Toggle from "react-toggle";
+// Components
+import ThemeSwitch from "../../components/ThemeSwitch";
 
-import Logo from "../../assets/images/logo.svg";
+// import Logo from "../../assets/images/logo.svg";
 
 export default function Header({ handleTheme, isLight }: HeaderProps) {
   return (
@@ -13,19 +14,7 @@ export default function Header({ handleTheme, isLight }: HeaderProps) {
       {/* MVST. logo */}
       <h3 className="m-0">MVST.</h3>
       {/* Theme switch */}
-
-      <div id="switchWrapper">
-        <Toggle
-          // id="customSwitch"
-          defaultChecked={false}
-          className="custom-switch d-flex align-items-center"
-          icons={{
-            checked: <BsSun className="ft-dark" />,
-            unchecked: <BsMoon className="ft-light" />,
-          }}
-          onChange={handleTheme}
-        />
-      </div>
+      <ThemeSwitch handleTheme={handleTheme} />
     </header>
   );
 }

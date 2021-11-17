@@ -16,7 +16,24 @@ export interface Reducer {
   payload: boolean | number;
 }
 
-// Components
+/**
+ * Boolean theme interface
+ */
+export interface ThemeProp {
+  isLight: boolean;
+}
+
+/**
+ * Void function type
+ */
+export type voidFunction = () => void;
+
+/**
+ * Void function interface
+ */
+export interface VoidFunctionProp {
+  handleTheme: voidFunction;
+}
 
 /**
  * Header prop types
@@ -27,12 +44,4 @@ export interface Reducer {
 
 export interface HeaderProps extends ThemeProp {
   handleTheme: () => void;
-}
-
-/**
- * Light prop type
- */
-
-export interface ThemeProp {
-  isLight: boolean;
 }
