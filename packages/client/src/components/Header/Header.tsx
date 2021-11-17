@@ -1,11 +1,13 @@
 import React from "react";
 import { BsSun, BsMoon } from "react-icons/bs";
 
+import { HeaderProps } from "../../utils/types";
+
 import Toggle from "react-toggle";
 
 import Logo from "../../assets/images/logo.svg";
 
-export default function Header() {
+export default function Header({ handleTheme, isLight }: HeaderProps) {
   return (
     <header className="p- px-5 d-flex justify-content-between align-items-center">
       {/* MVST. logo */}
@@ -21,7 +23,7 @@ export default function Header() {
             checked: <BsSun className="ft-dark" />,
             unchecked: <BsMoon className="ft-light" />,
           }}
-          // onChange={}
+          onChange={handleTheme}
         />
       </div>
     </header>

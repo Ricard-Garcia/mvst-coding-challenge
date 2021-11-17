@@ -1,8 +1,13 @@
 import React from "react";
-
 import { BsPlay } from "react-icons/bs";
 
-export default function Main() {
+// Utils
+import { ThemeProp } from "../../utils/types";
+import { setTheme } from "../../utils/theme";
+
+export default function Main({ isLight }: ThemeProp) {
+  const [primary, secondary] = setTheme(isLight);
+
   return (
     <main className="d-flex flex-column justify-content-center align-items-center pb-5">
       {/* Total time */}
@@ -13,7 +18,7 @@ export default function Main() {
       <button
         type="button"
         id="timeButton"
-        className="d-flex justify-content-center align-items-center bg-dark ft-light"
+        className={`d-flex justify-content-center align-items-center bg-${secondary} ft-${primary}`}
       >
         <BsPlay className="ft-medium me-2" />
         <p className="m-0">00:00:00</p>

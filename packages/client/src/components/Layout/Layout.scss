@@ -2,6 +2,9 @@
 
 #layoutComponent {
   height: 100%;
+  * {
+    transition: 2;
+  }
   header {
     height: 80px;
     #switchWrapper {
@@ -25,7 +28,7 @@
       }
 
       // Dark mode
-      .custom-switch.react-toggle--focus .react-toggle-track {
+      .custom-switch.react-toggle--x .react-toggle-track {
         background-color: c.$darkColor;
         border: 1px solid c.$darkColor;
       }
