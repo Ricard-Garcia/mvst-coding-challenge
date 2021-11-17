@@ -1,12 +1,29 @@
 import React from "react";
+import { BsSun, BsMoon } from "react-icons/bs";
+
+import Toggle from "react-toggle";
+
+import Logo from "../../assets/images/logo.svg";
 
 export default function Header() {
   return (
-    <header className="p-4 d-flex justify-content-between align-items-center">
+    <header className="p- px-5 d-flex justify-content-between align-items-center">
       {/* MVST. logo */}
-      <p className="m-0">LOGO</p>
+      <h3 className="m-0">MVST.</h3>
       {/* Theme switch */}
-      <div id="switch">Switch</div>
+
+      <div id="switchWrapper">
+        <Toggle
+          // id="customSwitch"
+          defaultChecked={false}
+          className="custom-switch d-flex align-items-center"
+          icons={{
+            checked: <BsSun className="ft-dark" />,
+            unchecked: <BsMoon className="ft-light" />,
+          }}
+          // onChange={}
+        />
+      </div>
     </header>
   );
 }
