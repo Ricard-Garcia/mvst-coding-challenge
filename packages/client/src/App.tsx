@@ -1,12 +1,11 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
 
+// Pages
 import Timer from "./pages/Timer";
 
 function App() {
   return (
-    <div className="App">
+    <div id="App">
       <Timer />
     </div>
   );
