@@ -20,4 +20,33 @@ async function getTotalTime(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-export const timeController = { getTotalTime };
+// Patch (update) total time
+async function updateTotalTime(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  try {
+    // Extract inserted time
+    const { insertedTime } = req.body;
+
+    // Update total time in database
+    const time = await Time.updateMany(
+      {},
+      { $inc: { totalTime: insertedTime } },
+    );
+
+    // TODO Add new log
+
+    // Send response
+    res.status(200).send({ message: "Total time updated." });
+  } catch (error: any) {
+    res.status(500).send({
+      message: "Couldn't update total time.",
+      error: error.message,
+    });
+    next(error);
+  }
+}
+
+export const timeController = { getTotalTime, updateTotalTime };

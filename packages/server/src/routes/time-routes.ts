@@ -8,6 +8,6 @@ const timeRouter = Router();
 timeRouter.get(`${SERVER.MAIN}`, timeController.getTotalTime);
 
 // Patch (update) total time
-// timeRouter.patch(`${SERVER.MAIN}`, timeController.updateTotalTime);
+timeRouter.patch(`${SERVER.MAIN}`, timeController.updateTotalTime);
 
 export { timeRouter };
