@@ -15,29 +15,27 @@ import Spinner from "../Spinner";
 
 export default function Main({ isLight }: ThemeProp) {
   // State
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [totalTime, setTotalTime] = useState<number>(0);
 
   // Theme colors
   const [primary, secondary] = setTheme(isLight);
 
-  // Load total from database
+  // Load/refresh total from database
   const loadTotalTime = async () => {
-    // Start loading time
+    // Loading time
     setIsLoading(true);
-
     // Call to api
     const { data } = await getTotalTime();
     const databaseTotalTime = data.data[0].totalTime;
     setTotalTime(databaseTotalTime);
-
     // Done loading time
     setIsLoading(false);
   };
 
-  const handleRefreshTotal = (): void => {
+  // Delete total time
+  const handleDeleteTotal = (): void => {
     console.log("Refreshed total!");
-    // setTotalTime(1000);
   };
 
   // Mount state
@@ -62,7 +60,7 @@ export default function Main({ isLight }: ThemeProp) {
               {translateTime(totalTime)}
             </h1>
 
-            <button type="button" onClick={handleRefreshTotal}>
+            <button type="button" onClick={handleDeleteTotal}>
               <BsArrowCounterclockwise
                 className={`ft-medium ft-${secondary}`}
               />
@@ -71,7 +69,7 @@ export default function Main({ isLight }: ThemeProp) {
         )}
       </div>
       {/* Timer button */}
-      <TimerButton isLight={isLight} />
+      <TimerButton loadTotalTime={loadTotalTime} isLight={isLight} />
     </main>
   );
 }

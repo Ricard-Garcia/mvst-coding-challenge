@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { BsPlay, BsPause } from "react-icons/bs";
 
+// Api
+import { updateTotalTime } from "../../api/time-api";
+
 // Utils
-import { ThemeProp, VoidFunction } from "../../utils/types";
+import { TimerButtonProps } from "../../utils/types";
 import { setTheme } from "../../utils/theme";
 import { translateTime } from "../../utils/time";
 
-export default function TimerButton({ isLight }: ThemeProp) {
+export default function TimerButton({
+  loadTotalTime,
+  isLight,
+}: TimerButtonProps) {
   // State
   const [isCounting, setIsCounting] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
@@ -17,8 +23,8 @@ export default function TimerButton({ isLight }: ThemeProp) {
   // Theme colors
   const [primary, secondary] = setTheme(isLight);
 
-  //   Start/stop counting
-  const handleCount: VoidFunction = () => {
+  // Start/stop count
+  const handleCount = async () => {
     // Starting
     if (!isCounting) {
       setIsCounting(true);
@@ -26,6 +32,12 @@ export default function TimerButton({ isLight }: ThemeProp) {
     // Stopping
     else {
       setIsCounting(false);
+
+      // Send count to database
+      await updateTotalTime(count);
+
+      // Refresh main view
+      loadTotalTime();
     }
   };
 

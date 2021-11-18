@@ -29,12 +29,10 @@ async function updateTotalTime(
   try {
     // Extract inserted time
     const { insertedTime } = req.body;
+    console.log(insertedTime);
 
     // Update total time in database
-    const time = await Time.updateMany(
-      {},
-      { $inc: { totalTime: insertedTime } },
-    );
+    await Time.updateMany({}, { $inc: { totalTime: insertedTime } });
 
     // TODO Add new log
 

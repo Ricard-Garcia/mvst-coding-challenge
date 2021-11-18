@@ -8,9 +8,5 @@ export default function Spinner({ isLight }: ThemeProp) {
   // Theme colors
   const [primary, secondary] = setTheme(isLight);
 
-  return (
-    <div className={`spinner-grow ft-${secondary}`} role="status">
-      {/* <span className="visually-hidden">Loading...</span> */}
-    </div>
-  );
+  return <div className={`spinner-grow ft-${secondary}`} />;
 }

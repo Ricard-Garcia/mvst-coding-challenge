@@ -38,12 +38,23 @@ export interface VoidFunctionProp {
 /**
  * Header prop types
  *
- * handleTheme changes the current theme (light/dark)
+ * handleTheme - changes the current theme (light/dark)
  * isLight - boolean to filter theme
  */
 
 export interface HeaderProps extends ThemeProp {
   handleTheme: () => void;
+}
+
+/**
+ * Timer button prop types
+ *
+ * loadTotalTime - refreshes total time in main view
+ * isLight - boolean to filter theme
+ */
+
+export interface TimerButtonProps extends ThemeProp {
+  loadTotalTime: () => void;
 }
 
 /**

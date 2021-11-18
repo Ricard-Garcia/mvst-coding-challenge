@@ -4,7 +4,7 @@ import axios from "axios";
 
 export function makeTimeApi() {
   return axios.create({
-    baseURL: `http://localhost:4000/`,
+    baseURL: `${API.MAIN}`,
   });
 }
 
@@ -18,11 +18,5 @@ export async function updateTotalTime(
   insertedTime: number,
   api = makeTimeApi()
 ) {
-  return api.patch(
-    "",
-    {
-      "Content-Type": "application/json",
-    },
-    { data: { insertedTime: insertedTime } }
-  );
+  return api.patch("", { insertedTime: insertedTime });
 }
