@@ -48,10 +48,9 @@ export default function Main({ isLight }: ThemeProp) {
       {/* Total time */}
       <div
         id="totalTimeWrapper"
-        className="d-flex flex-column align-items-center"
+        className="d-flex flex-column justify-content-center align-items-center"
       >
         {/* Loading conditional */}
-
         {isLoading ? (
           <Spinner isLight={isLight} />
         ) : (
