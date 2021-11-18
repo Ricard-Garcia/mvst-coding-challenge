@@ -1,13 +1,18 @@
-const express = require("express");
-const app = express();
-const port = 8080; // default port to listen
+import { app } from "./server";
+import { config } from "./config/config";
+import { connect } from "./db/connect";
+import { seedDefaultTime } from "./db/seed";
 
-// define a route handler for the default home page
-app.get("/", (req, res) => {
-  res.send("Hello world!");
-});
+// Connect server
+connect()
+  .then(async () => {
+    // Initial db seeding
+    seedDefaultTime();
 
-// start the Express server
-app.listen(port, () => {
-  console.log(`server started at http://localhost:${port}`);
-});
+    app.listen(config.app.port, () => {
+      console.log(`Server is now running at port ${config.app.port}!`);
+    });
+  })
+  .catch((error) => {
+    console.log(`Error connecting the server: ${error}`);
+  });
