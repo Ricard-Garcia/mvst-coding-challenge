@@ -1,13 +1,13 @@
 import { app } from "./server";
 import { config } from "./config/config";
 import { connect } from "./db/connect";
-import { seedDefaultTime } from "./db/seed";
+// import { seedDefaultTime } from "./db/seed";
 
 // Connect server
 connect()
   .then(async () => {
     // Initial db seeding
-    seedDefaultTime();
+    // seedDefaultTime();
 
     app.listen(config.app.port, () => {
       console.log(`Server is now running at port ${config.app.port}!`);
