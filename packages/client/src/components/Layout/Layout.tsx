@@ -22,14 +22,18 @@ export default function Layout() {
   // Change theme
   const handleTheme: VoidFunction = () => {
     setIsLight(!isLight);
-    setLocalStorage("isLight", String(isLight));
+    setLocalStorage("isLight", String(!isLight));
   };
 
-  // If set, get localStorage on load
   useEffect(() => {
-    if (getLocalStorage("isLight")) {
+    // If set, get localStorage on load
+    if (getLocalStorage("isLight") !== null) {
       const localStorageTheme = getLocalStorage("isLight");
       setIsLight(JSON.parse(localStorageTheme));
+    }
+    // Otherwise, set it on default
+    else {
+      setLocalStorage("isLight", String(isLight));
     }
   }, []);
 

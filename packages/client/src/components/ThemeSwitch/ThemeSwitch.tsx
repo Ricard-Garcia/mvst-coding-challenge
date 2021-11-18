@@ -4,6 +4,7 @@ import { BsSun, BsMoon } from "react-icons/bs";
 
 // Utils
 import { VoidFunctionProp } from "../../utils/types";
+import { getLocalStorage } from "../../utils/localStorage";
 
 // Styles
 import "./ThemeSwitch.scss";
@@ -12,8 +13,7 @@ export default function ThemeSwitch({ handleTheme }: VoidFunctionProp) {
   return (
     <div id="switchWrapper">
       <Toggle
-        // id="customSwitch"
-        defaultChecked={false}
+        defaultChecked={!getLocalStorage("isLight")}
         className="custom-switch d-flex align-items-center"
         icons={{
           checked: <BsSun className="ft-dark" />,
