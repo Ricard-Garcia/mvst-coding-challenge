@@ -1,5 +1,8 @@
 import { API } from "../constants/routes";
 
+// Utils
+import { RequestBody } from "../utils/types";
+
 import axios from "axios";
 
 export function makeTimeApi() {
@@ -15,8 +18,18 @@ export async function getTotalTime(api = makeTimeApi()) {
 
 // Patch (update) total time
 export async function updateTotalTime(
-  insertedTime: number,
+  time: number,
+  isClear: boolean = false,
   api = makeTimeApi()
 ) {
-  return api.patch("", { insertedTime: insertedTime });
+  // Conditional body (increment or clear total time)
+  let reqBody: RequestBody;
+
+  if (isClear) {
+    reqBody = { clearTime: 0 };
+  } else {
+    reqBody = { insertedTime: time };
+  }
+
+  return api.patch("", reqBody);
 }

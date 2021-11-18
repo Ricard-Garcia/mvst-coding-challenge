@@ -66,3 +66,13 @@ export interface TimeType {
   stop: number;
   current: number;
 }
+
+/**
+ * Request body object
+ *
+ * Used in time-api to either increment or clear total time
+ */
+
+export interface RequestBody {
+  [key: string]: number;
+}

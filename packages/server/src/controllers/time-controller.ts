@@ -27,12 +27,20 @@ async function updateTotalTime(
   next: NextFunction,
 ) {
   try {
-    // Extract inserted time
-    const { insertedTime } = req.body;
-    console.log(insertedTime);
-
-    // Update total time in database
-    await Time.updateMany({}, { $inc: { totalTime: insertedTime } });
+    // Increment
+    if ("insertedTime" in req.body) {
+      // Extract inserted time
+      const { insertedTime } = req.body;
+      // Update  database
+      await Time.updateMany({}, { $inc: { totalTime: insertedTime } });
+    }
+    // Clear
+    else {
+      // Extract clear time
+      const { clearTime } = req.body;
+      // Update database
+      await Time.updateMany({}, { totalTime: clearTime });
+    }
 
     // TODO Add new log
 

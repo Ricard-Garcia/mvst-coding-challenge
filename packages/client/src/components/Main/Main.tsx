@@ -34,8 +34,11 @@ export default function Main({ isLight }: ThemeProp) {
   };
 
   // Delete total time
-  const handleDeleteTotal = (): void => {
+  const handleDeleteTotal = async () => {
     console.log("Refreshed total!");
+    // Clear total time ('true' tells function to clear)
+    await updateTotalTime(0, true);
+    await loadTotalTime();
   };
 
   // Mount state
