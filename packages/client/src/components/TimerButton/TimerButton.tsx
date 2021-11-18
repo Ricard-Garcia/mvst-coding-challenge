@@ -65,7 +65,7 @@ export default function TimerButton({
     <button
       type="button"
       id="timeButton"
-      className={`d-flex justify-content-center align-items-center bg-${secondary} ft-${primary}`}
+      className={`d-flex justify-content-center align-items-center mb-5 bg-${secondary} ft-${primary}`}
       onClick={handleCount}
     >
       {/* Conditionally render play/pause */}
