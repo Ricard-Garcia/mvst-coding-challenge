@@ -45,3 +45,13 @@ export interface VoidFunctionProp {
 export interface HeaderProps extends ThemeProp {
   handleTheme: () => void;
 }
+
+/**
+ * Time type - state for TimerButton
+ */
+
+export interface TimeType {
+  start: number;
+  stop: number;
+  current: number;
+}
