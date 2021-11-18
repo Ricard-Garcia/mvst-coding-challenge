@@ -1,4 +1,4 @@
-export function translateTime(duration: number): void {
+export function translateTime(duration: number): string {
   let seconds: number | string = Math.floor((duration / 1000) % 60);
   let minutes: number | string = Math.floor((duration / (1000 * 60)) % 60);
   let hours: number | string = Math.floor((duration / (1000 * 60 * 60)) % 24);
@@ -7,5 +7,5 @@ export function translateTime(duration: number): void {
   minutes = minutes < 10 ? "0" + minutes : minutes;
   seconds = seconds < 10 ? "0" + seconds : seconds;
 
-  console.log("Resultant time =>" + hours + ":" + minutes + ":" + seconds);
+  return String(hours + ":" + minutes + ":" + seconds);
 }

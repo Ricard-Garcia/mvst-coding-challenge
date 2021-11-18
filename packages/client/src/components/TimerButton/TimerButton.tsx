@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import { BsPlay, BsPause } from "react-icons/bs";
 
 // Utils
-import { ThemeProp, VoidFunction, TimeType } from "../../utils/types";
+import { ThemeProp, VoidFunction } from "../../utils/types";
 import { setTheme } from "../../utils/theme";
 import { translateTime } from "../../utils/time";
 
 export default function TimerButton({ isLight }: ThemeProp) {
+  // State
   const [isCounting, setIsCounting] = useState<boolean>(false);
-  const [count, setCount] = useState<TimeType>({
-    start: 0,
-    stop: 0,
-    current: 0,
-  });
+  const [count, setCount] = useState<number>(0);
 
+  // Variables
+  const oneSecond: number = 1000;
+
+  // Theme colors
   const [primary, secondary] = setTheme(isLight);
 
   //   Start/stop counting
@@ -21,30 +22,30 @@ export default function TimerButton({ isLight }: ThemeProp) {
     // Starting
     if (!isCounting) {
       setIsCounting(true);
-      const start: number = Date.now();
-      setCount({ ...count, start: start });
     }
     // Stopping
     else {
       setIsCounting(false);
-      const stop: number = Date.now();
-      setCount({ ...count, stop: stop });
     }
   };
 
   // Update count
   useEffect(() => {
-    if (isCounting) {
+    // Updating after first second
+    if (isCounting && count !== 0) {
       setTimeout(() => {
-        setCount({
-          ...count,
-          current: count.current + 1,
-        });
-      }, 1000);
-      console.log(count.current);
-    } else {
-      const resultantTime: number = count.stop - count.start;
-      translateTime(resultantTime);
+        setCount(count + oneSecond);
+      }, oneSecond);
+    }
+    // Adding first seccond
+    else if (isCounting) {
+      setTimeout(() => {
+        setCount(count + oneSecond);
+      }, oneSecond);
+    }
+    // Reset count
+    else {
+      setCount(0);
     }
   }, [isCounting, count]);
 
@@ -61,7 +62,7 @@ export default function TimerButton({ isLight }: ThemeProp) {
       ) : (
         <BsPlay className="ft-medium me-2" />
       )}
-      <p className="m-0">{count.current}</p>
+      <p className="m-0">{translateTime(count)}</p>
     </button>
   );
 }
