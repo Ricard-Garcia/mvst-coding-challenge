@@ -23,6 +23,7 @@
     "client-test": "yarn workspace client test",
     "server": "yarn workspace server start",
     "server-dev": "yarn workspace server dev",
+    "server-test": "yarn workspace server test",
     "start": "concurrently --kill-others-on-fail \"yarn client\" \"yarn server\"",
     "dev": "concurrently --kill-others-on-fail \"yarn client-dev\" \"yarn server-dev\""
   },
