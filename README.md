@@ -76,6 +76,20 @@ PORT=4000
 
 ### Tests
 
+Both client and server have a couple of tests to check that the main components are rendered (client) and that data format is received correctly from the database (server). To run these tests you can do it like so:
+
+Client tests:
+
+```
+yarn client-test
+```
+
+Server tests:
+
+```
+yarn server-test
+```
+
 ## 🦴 Project Structure
 
 ### Folder structure 🗂
@@ -85,23 +99,23 @@ PORT=4000
 └── packages <i>// Monorepo workspaces</i>
   └── client <i>// Front end React App</i>
   │ └── src
-  │ ├── api <i>// All api petitions</i>
-  │ ├── components
-  │ ├── constants
-  │ ├── __mocks__ <i>// For testing purposes</i>
-  │ ├── pages
-  │ ├── sass
-  │ ├── __test__
-  │ └── utils <i>// Reusable code snippets </i>
+  │   ├── __test__
+  │   ├── api <i>// All api petitions</i>
+  │   ├── components
+  │   ├── constants
+  │   ├── __mocks__ <i>// For testing purposes</i>
+  │   ├── pages
+  │   ├── sass
+  │   └── utils <i>// Reusable code snippets </i>
   └── server <i>// Back end Node Server</i>
     └── src
+      ├── __test__
       ├── config
       ├── controllers
       ├── db
       ├── models
       ├── routes
       ├── services
-      ├── __test__
       └── utils
 ```
 
