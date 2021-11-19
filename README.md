@@ -2,7 +2,16 @@
 
 # MVST Time Coding Challenge
 
-## Introduction & requirements
+- [Introduction & requirements](#introcution-&-requirements)
+- [Getting started](#getting-started)
+- [Project structure](#project-structure)
+- [Deployment](#deployment)
+- [Workflow](#workflow)
+- [Future improvements](#future-improvements)
+- [Feedback](#feedback)
+- [Resources](#resources)
+
+## 🧭 Introduction & requirements
 
 This repository contains the coding challenge as a part of MVST. job application process, a **full stack** web application developed using React, NodeJs, ExpressJs and MongoDB.
 
@@ -15,6 +24,14 @@ The application also has a header with MVST. logotype and a switch that allows t
 ## 🚀 Getting Started
 
 The following steps will guide you through the essentials you will have to install and run in order to use this repository and build this application in your local machine.
+
+### Installation🔧
+
+First, you will need to `clone` or `fork` the repository into your Github account. Choose a place in your local machine and paste the next command in your terminal:
+
+```
+$ git clone https://github.com/Ricard-Garcia/mvst-coding-challenge.git
+```
 
 ### Requirements 📋
 
@@ -32,27 +49,19 @@ npm install -g yarn
 
 **MongoDB Atlas**
 
-[MongoDB Atlas](https://www.mongodb.com/) - [Cloudinary](https://cloudinary.com/)
-
-### Installation 🔧
-
-First, you will need to `clone` or `fork` the repository into your Github account:
-
-```
-$ git clone https://github.com/rocket-team-webdev/wave
-```
+Since this application is consuming a database stored in MongoDB Atlas, you will need to [create](https://www.mongodb.com/) an account on their website, add a new project and a database. Keep the `username` and the `password` of that database since you will need to provide them in the server .env file.
 
 **Environment variables**
 
 Since
 
-The **client** .env file need to contain the next variables:
+The **client** .env file need to contain the endpoint pointing at the deployed server. This is where the client is getting the data from the database.
 
 ```
 REACT_APP_API_ROUTE=https://mvst-coding-challenge-api.herokuapp.com/
 ```
 
-The **server** .env file needs to contain the next variables to connect to [MongoDB Atlas](https://www.mongodb.com/) cluster:
+The **server** .env file needs to contain the next variables to connect to [MongoDB Atlas](https://www.mongodb.com/) cluster. Remember the `username` and `password` we kept from the previous step.
 
 ```
 # Database connection
@@ -65,95 +74,96 @@ PORT=4000
 
 ```
 
+### Tests
+
 ## 🦴 Project Structure
 
 ### Folder structure 🗂
 
-<pre>  
-├── documentation <i>// All project wireframes, PRD, and presentation files</i>  
-└── packages <i>// Monorepo workspaces</i>  
-├── client <i>// Frontend React App</i>  
-│ └── src  
-│ ├── api <i>// All api petitions</i>  
-│ ├── assets  
-│ ├── components  
-│ ├── constants  
-│ ├── hooks  
-│ ├── __mocks__ <i>// For testing purposes</i>  
-│ ├── pages  
-│ ├── redux  
-│ ├── sass  
-│ ├── services <i>// 3rd party services used</i>  
-│ ├── __test__  
-│ └── utils <i>// Reusable code snippets </i>  
-├── server <i>// Backend Node Server</i>  
-│ ├── src  
-│ │ ├── config  
-│ │ ├── controllers  
-│ │ ├── db  
-│ │ ├── middlewares  
-│ │ ├── models  
-│ │ ├── routes  
-│ │ ├── services  
-│ │ ├── __test__  
-│ │ └── utils  
-│ └── uploads <i>// Folder for temporary uploaded files</i>  
-└── stats-server <i>// Backend PHP/Laravel Server</i>  
-└── src  
-├── app  
-│ ├── Console  
-│ ├── Exceptions  
-│ ├── Http  
-│ │ ├── Controllers  
-│ │ └── Middleware  
-│ ├── Models  
-│ └── Providers  
-├── config  
-└── database  
-</pre>
+```
+├── documentation <i>// All project wireframes, PRD</i>
+└── packages <i>// Monorepo workspaces</i>
+  └── client <i>// Front end React App</i>
+  │ └── src
+  │ ├── api <i>// All api petitions</i>
+  │ ├── components
+  │ ├── constants
+  │ ├── __mocks__ <i>// For testing purposes</i>
+  │ ├── pages
+  │ ├── sass
+  │ ├── __test__
+  │ └── utils <i>// Reusable code snippets </i>
+  └── server <i>// Back end Node Server</i>
+    └── src
+      ├── config
+      ├── controllers
+      ├── db
+      ├── models
+      ├── routes
+      ├── services
+      ├── __test__
+      └── utils
+```
 
-### Client-Side 🖥
+### Client 🖥
 
-For the front end of this project we have used React framework. We have created several component elements for every piece of code that should be reusable on the app. Then, we have created all the pages that should be rendered on the browser and within we applied its components and logic. To make the calls to the api, we have created an _api_ folder with all of the routes we need to call from the app. We have used Redux library to improve the data flow that we needed to be consumed at several places of the website. As a third party services we have used firebase to create a safe authentication of the app. We implemented the necessary tests to assure that the code was running properly, you will find them at the _test_ folder.
+The client package consists in a React app using a Typescript template. Its `src` folder contains components used in the application and the page that contains all of these components and arranges them in the only view.
 
-### Server-Side 🔐
+In terms of connecting to the API, the client side has an `api` folder that contains all functions needed to create an axios connection to the API endpoint and apply the desired HTTP verb (either `GET` or `PATCH`).
 
-We have divided the back end of our app into two sides. The main reason of this was to put in practice two different back end languages (Javascript and PHP).
+Last but not least, the application is styled with Sass and it is divided into separate files in the application. Some components have their own unique styles while a general styling (a sort of personal Bootstrap) is defined in the `sass` folder where all diferent components are defined for convinence.
 
-#### NodeJS
+### Server 🔐
 
-This back end side is our main API. Here we receive most of the requests that are sent by the front end. This API has the core functionalities of the back end such as the authentication, the database management and the use of other third party services as _cloudinary_. This API also interacts with the other side of our back end.
+This server side is where the API is set using NodeJS and connected via Express. The Model/Controller pattern is defined here where `models` set documents in the database and `controllers` modify/create them.
 
-#### PHP Laravel
-
-This is our secondary API. It was created to manage all of the app statistics. The main purpose of our application is not depending on this, but it is very useful to manage how our app is being used.
+Also, a `db` folder is defined both to make the connection to the database and create a seeder for the original `totalTime` that is displayed in the application (above the button).
 
 ## Deployment 🛫
 
 In order to deploy both client and server workspace this application has used [Heroku](www.heroku.com).
 
-# 🧭 App navigation
-
-## Entry points 🏁
-
-## 🗺 Task organization
+## 🗺 Workflow
 
 ### Organization 📆
 
-In order to achieve all of our goals we have implemented the Scrum Agile Methodology. We divided all the process into separated one week Sprints, everyone of them with their own goals. To manage those sprints we set daily, sprint plannings and review and sprint retrospective meetings. We used Github Projects to divide our sprints, issues and tasks on boards using the Kanban structure. Github projects allowed us to automate and connect those issues with the branches of our repository. We also implemented a code review system in order to get all the team connected with all parts of the project.
+Even though the size of its application is small, the **Scrum Agile Methodology** has been applied to develop it. One can consider this entire tech challenge as a **sprint** consisting of four main **epics** (listed below) all with different **user stories** and subtasks.
 
-![enter image description here](./documentation/screenshots/gprojects1.jpg)
+**Epics**
 
-## Branch Naming Strategy 🎋
+- Project configuration
+- Frontend structure
+- Backend structure
+- Documentation
+- Remaining tasks
 
-To manage all the process of the project within the Scrum Agile Methodology using Github Projects and its automation, we created a branch naming strategy so we can store into Github folders and subfolders all of these branches and divide them by sprints, epics, user stories, issues numbers and tasks description and also, connect our branches with the Github issues so we could close them every time we created a Pull Request.
-An example of this branch naming is next:
+### Naming Strategy
 
-`**epic-name/user-story/134**`
+In order to make the application easy to develop (and extend by others!), this previous Scrum methodology has been applied in how branches have been named. See this:
 
-# 🕵️‍♂️ Resources
+```
+epic-name/user-story/1
+```
 
-## Main resources 🧬
+## 🤝 Future improvements
+
+- Authentication.
+- Pause but not send time right away.
+- Submit time with submit button.
+- Explore possibilities in terms of design.
+- Choose type of stopwatch.
+
+## Feedback
+
+Simple at first, this application became a bit more complex at the end. The usage of a database to persist the data and consume it in a deployed version (or simply store all time and logs in a database) is something that haven't thought about it in the first step.
+
+Besides that, one main feature I think would be nice to have is an **authentication** so that users can have a log and **display all the different times they entered to total time in a sidebar**, for example. Probably this would extend a bit more this coding challenge but I think it would complete the full stack and entire functionality of an application. It can be either done in [Firebase](https://firebase.google.com/) or usign [JWT](https://jwt.io/).
+
+Also one interesting feature could be **selecting the type of time stopwatch** this application has. It can be a normal **stopwatch**, one with a **set alarm on a timeout**, a lap **stopwatch**,… In terms of design it would not be complex to develop while having to choose which one of this to develop could be an interesting part of the coding challenge.
+
+## 🕵️‍♂️ Resources
+
+### Main resources
 
 - [Axios](https://axios-http.com/docs/intro)
 - [Bootstrap](https://getbootstrap.com/)
@@ -165,20 +175,16 @@ An example of this branch naming is next:
 - [Prettier](https://prettier.io/)
 - [React](https://es.reactjs.org/)
 - [SASS](https://sass-lang.com/)
+- [Typescript](https://www.typescriptlang.org/)
 - [Yarn](https://yarnpkg.com/)
 
-## Support libraries 📚
+### Libraries
 
-- [Framer-motion](https://www.framer.com/motion/)
 - [Helmet Async](https://github.com/staylor/react-helmet-async)
 - [Morgan](https://github.com/expressjs/morgan)
 - [Nodemon](https://nodemon.io/)
 - [React-icons](https://react-icons.github.io/react-icons/)
 
-# 🖇️ Contributing
+## Contributor ✨
 
-If you want to contribute, please fork the repository, create a new branch whit your contribution, and push the branch as a pull requests.
-
-# ✨ Contributors
-
-Thanks goes to these wonderful people<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section --> <!-- prettier-ignore-start --> <!-- markdownlint-disable --> <table> <tr> <td align="center"><a href="https://github.com/bbenalia"><img src="https://avatars.githubusercontent.com/u/65949632?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Brahim Benalia</b></sub></a><br /> <a href="https://github.com/rocket-team-webdev/wave/commits/develop?author=bbenalia" title="Code">💻</a> </td> <td align="center"><a href="https://github.com/labietelabiete"><img src="https://avatars.githubusercontent.com/u/72515410?v=4" width="100px;" alt=""/><br /><sub><b>Hugo Gómez</b></sub></a><br /><a href="https://github.com/rocket-team-webdev/wave/commits/develop?author=labietelabiete" title="Code">💻</a></td> <td align="center"><a href="https://github.com/Nachomontoya"><img src="https://avatars.githubusercontent.com/u/73990495?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nacho Montoya</b></sub></a><br /><a href="https://github.com/rocket-team-webdev/wave/commits/develop?author=Nachomontoya" title="Code">💻</a></td> <td align="center"><a href="https://github.com/Ricard-Garcia"><img src="https://avatars.githubusercontent.com/u/15958524?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ricard García</b></sub></a><br /><a href="https://github.com/rocket-team-webdev/wave/commits/develop?author=ricard-garcia" title="Code">💻</a> </td> <td align="center"><a href="https://github.com/mhfortuna"><img src="https://avatars.githubusercontent.com/u/66578026?v=4s=100" width="100px;" alt=""/><br /><sub><b>Mathias Fortuna</b></sub></a><br /><a href="https://github.com/rocket-team-webdev/wave/commits/develop?author=mhfortuna" title="Code">💻</a></td> <td align="center"><a href="https://github.com/Ernest-DT"><img src="https://avatars.githubusercontent.com/u/78990572?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ernest Duocastella</b></sub></a><br /><a href="https://github.com/rocket-team-webdev/wave/commits/develop?author=ernest-dt" title="Code">💻</a> </td> </tr> </table> <!-- markdownlint-restore --> <!-- prettier-ignore-end --> <!-- ALL-CONTRIBUTORS-LIST:END --> This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome! <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section --> [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-) <!-- ALL-CONTRIBUTORS-BADGE:END -->
+👤 [Ricard Garcia](https://github.com/Ricard-Garcia)
