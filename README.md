@@ -1,6 +1,8 @@
-# mvst-coding-challenge
+![Preview](./documentation/images/mvst-time-coding-challenge.gif)
 
-Coding challenge as a part of MVST. application process
+# MVST Time Coding Challenge
+
+This repository contains the coding challenge as a part of MVST. job application process.
 
 <!-- ## Figma [Figma file](https://www.figma.com/file/zbUncRShPQWo5vZgEmyKHG/WaveApp?node-id=0%3A1) [Cloudinary API](https://cloudinary.com/documentation/image_upload_api_reference#destroy_method) [multer](https://github.com/expressjs/multer) --> <p align="center">
 
@@ -8,107 +10,51 @@ Coding challenge as a part of MVST. application process
 
 WaveApp is a streaming music web application where you can share and discover songs, playlists and albums with other users. Built with MongoDB, Express, Node, Laravel, Firebase, Cloudinary and Laravel for the server side, and React, Redux for the client side.
 
-> You can see deployed our application [here](https://the-wave-app.netlify.app/)
+> Check the deployed version of this challenge [here](https://mvst-coding-challenge.herokuapp.com/)
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-## Requirements 📋
+### Requirements 📋
 
 You need to install [NodeJs](https://nodejs.org/) and [Docker](https://www.docker.com/products/docker-desktop) from their webpages Install Yarn globally: `npm install --global yarn` Once you have installed these programs, you need to create accounts for: - [Firebase](https://firebase.google.com/) - [MongoDB Atlas](https://www.mongodb.com/) - [Cloudinary](https://cloudinary.com/)
 
-## Installation 🔧
+### Installation 🔧
 
 First, you will need to `clone` or `fork` the repository into your Github account:
 
-<img src="https://docs.github.com/assets/images/help/repository/fork_button.jpg" alt="Fork on GitHub" width='450'>
-
-`$ git clone https://github.com/rocket-team-webdev/wave`
-
-You will need to configure Laravel:
-
-run `composer install` to install the PHP dependencies `docker-compose exec -T app composer install`
-
-Then you need to create a copy of the .env.example file and generate a new encryption key
-
-`docker-compose exec -T app cp .env.example .env`
-
-`docker-compose exec -T app php artisan key:generate `
-
-Then run yarn install in the base folder `yarn install`
-
-When you have all the dependencies installed you need to create three .env files, one located in client folder, one in server folder, and the other in stats-server folder.
-
-The client .env file need to contain the next variables:
-
 ```
-REACT_APP_WAVE_API_ROUTE = http://localhost:4000/api
-REACT_APP_WAVE_STATS_API_ROUTE = Your Laravel app route
+$ git clone https://github.com/rocket-team-webdev/wave
 ```
 
-The server .env file need to contain the next variables:
+Environment variables
+
+Since
+
+The **client** .env file need to contain the next variables:
 
 ```
-MONGO_DB_URL_PRODUCTION = Your MongoDB Atlas connection url for producction MONGO_DB_URL_DEVELOPMENT = Your MongoDB Atlas connection url for development
-MONGO_DB_URL_TEST = Your MongoDB Atlas connection url for test
 
-# Access token to
-API ACCESS_TOKEN_SECRET = Your access token
+REACT_APP_API_ROUTE=https://mvst-coding-challenge-api.herokuapp.com/
+```
+
+The **server** .env file needs to contain the next variables to connect to [MongoDB Atlas](https://www.mongodb.com/) cluster:
+
+```
+# Database connection
+MONGO_DB_URL_PRODUCTION=mongodb+srv://ricard-garcia:mvstchallenge123456@cluster0.z4nte.mongodb.net/mvst-challenge
+MONGO_DB_URL_DEVELOPMENT=mongodb://localhost/4000
+MONGO_DB_URL_TEST=mongodb://localhost/4000
 
 # Server settings
-PORT = 4000
-
-# Firebase settings
-FB_CERT_TYPE = Your FireBase cert type
-FB_CERT_PROJECT_ID = Your FireBase project id
-FB_CERT_PRIVATE_KEY_ID = Your FireBase private key id
-FB_CERT_PRIVATE_KEY = Your FireBase private key
-FB_CERT_CLIENT_EMAIL = Your FireBase client email
-FB_CERT_CLIENT_ID = Your FireBase client id
-FB_CERT_AUTH_URI = Your FireBase Auth uri
-FB_CERT_TOKEN_URI = Your FireBase token uri
-FB_CERT_AUTH_PROVIDER_X_509_CERT_URL = Your FireBase cert auth provider x 509 cert url FB_CERT_CLIENT_X_509_CERT_URL = Your FireBase cert client x 509 cert url
-
-# Cloudinary settings
-CLOUDINARY_API_KEY = Your Cloudinary API Key
-CLOUDINARY_API_SECRET = Your Cloudinary API Secret
-CLOUDINARY_NAME = Your Cloudinary name
-```
-
-The stats-server .env file need to contain the next variables:
+PORT=4000
 
 ```
-APP_NAME = Laravel APP_ENV = local
-APP_KEY = Your generated encryption keys
-APP_DEBUG = true APP_URL = http://localhost
-LOG_CHANNEL = stack
-LOG_LEVEL = debug
-DB_CONNECTION = mysql
-DB_HOST = mysql
-DB_PORT = 3306
-DB_DATABASE = Your database
-DB_USERNAME = Your database username
-DB_PASSWORD = Your database password
-BROADCAST_DRIVER = log
-CACHE_DRIVER = file
-FILESYSTEM_DRIVER = local
-QUEUE_CONNECTION = sync
-SESSION_DRIVER = file
-SESSION_LIFETIME = 120
-PUSHER_APP_ID =
-PUSHER_APP_KEY =
-PUSHER_APP_SECRET =
-PUSHER_APP_CLUSTER = mt1
-MIX_PUSHER_APP_KEY = "${PUSHER_APP_KEY}"
-MIX_PUSHER_APP_CLUSTER = "${PUSHER_APP_CLUSTER}"
-API_KEY_REACT = Your react api key
-API_KEY_NODE = Your node api key
-```
 
-# 🦴 Project Structure
+## 🦴 Project Structure
 
-## Folder structure 🗂
+### Folder structure 🗂
 
 <pre>  
 ├── documentation <i>// All project wireframes, PRD, and presentation files</i>  
@@ -171,95 +117,19 @@ This is our secondary API. It was created to manage all of the app statistics. T
 
 ## Deployment 🛫
 
-For the deploy of our application we have used [Heroku](www.heroku.com) for the back end and [Netlify](www.netlify.com) for our front end.
-
-During the development phase we implemented CI/CD on development branches.
+In order to deploy both client and server workspace this application has used [Heroku](www.heroku.com).
 
 # 🧭 App navigation
 
 ## Entry points 🏁
 
-WaveApp's entry point is a [sign in](https://wave-app-dev.herokuapp.com/sign-in) view from where the user is either able to log into the application or [sign up](https://wave-app-dev.herokuapp.com/sign-up) creating a new user. Both sign in and sign up forms allow the user to register to WaveApp manually or using Google's Firebase allowing the user to select which account to use.
+## 🗺 Task organization
 
-## Dashboard 📈
-
-WaveApp's home page (or dashboard) is the main view of the application, meaning that all its content is structured around what is displayed here.
-
-![Mockup-logo](./documentation/design/mockups/00-COMBO-Home.png)
-
-The main purpose of WaveApp's home page is to show a summary of the most popular content in its database, on the one hand, and a summary of the current user's content, on the other. Both cases show visual blocks containing the top content in each case and a link to see a more detailed version (see below). Being able to have both of these views inside one page means that the current user can choose between these two view options through a group of radio buttons.
-
-![Mockup-logo](./documentation/design/mockups/11-Search.png)
-
-In this view, WaveApp also allows the user to search amongst anything that is stored in its database. This means, submitting the text searched in the search bar will relocate the application to another page with a detailed result of what the user has searched for (songs, playlists, albums or users).
-
-## Content creation & visualization 🎧
-
-The main purpose of WaveApp is to upload, share and stream music between users. Because of this, the application has several ways of dealing with the core content of the application: songs. Using WaveApp, the user is able to upload songs, assign an album, place it inside a playlists,… Tracks, albums and playlists can be both created and edited and all of the forms used to do so are pretty similar. On the left there's a drag and drop and on the right a form to specify the details.
-
-![Mockup-logo](./documentation/design/mockups/00-COMBO-New.png)
-
-### Tracks
-
-Either going to _My songs_ or to the contextual menu inside the header, the user can choose to **upload** a song. The drag and drop area on the left accepts audio files while, on the right, the user can specify its _title_, _artist_, _genre_ and _album_ . This form is used as well to **edit** the song. Tracks can be seen displayed in albums, playlists and in summary blocks. The also known as track card, allows the user to like a track, see its details or edit it via a context menu.
-
-### \*Albums
-
-The way of **creating albums** is through the _upload song_ form. To create an album, the drag and drop allows the user upload an image as a cover of that album (or leave it with WaveApp's default one) while the form asks for a _title_ and _release year_. Because WaveApp considers albums as a mandatory data of a track the select input cannot be left empty and if a song is not considered to be inside in an album, can be declared as a single. On the left, the album view displays its title, genres, release year, creator, likes and a play button. On the right, there's a list that can be sorted either manually or clicking at the top sorter.
-
-### Playlists
-
-Of course, playlists are a list of tracks! WaveApp doesn't differ much from other streaming applications in this sense. Inside the application the user can **create playlists** either going to _My playlists_ or in the contextual menu inside the header which will redirect to the form. The drag and drop allows the user to set a background image for that playlist (or leave it with WaveApp's default one). The form, allows the user specify the name, color (used as a background if no image is set) and a description. There's also the possibility of making it public or private. All of these details can be edited as well. Bn the left, both the album and playlist views display its title, like/follow button, genres, release year, creator, likes and a play button. On the right, there's a list that can be sorted either manually or clicking at the top sorter.
-
-## User views 👩‍💻
-
-![Mockup-logo](./documentation/design/mockups/17-User-view.png)
-
-One of the main purposes of WaveApp is to discover and connect with other users. This means that, there's not only a personal view with a summary of what the user has created, liked and followed so far but there's also the possibility to go to other user's profile page. Likewise in the home page, most of the content blocks allow to redirect the user to a more detailed view with all songs, albums or playlists created and liked/followed by the user.
-
-![Mockup-logo](./documentation/design/mockups/00-COMBO-My.png)
-
-## Queue 👣
-
-The queue is a global state in the application. The user can create a queue that will be enlarged every time the user adds a new song to the queue via the track card contextual menu. The view of this queue is similar to a usual playlist but the user can delete the whole list of tracks or close the view and go back to home.
-
-## Account management 🧩
-
-WaveApp's current user can access a set of more detailed views of the account by clicking at the profile picture inside the header and accessing _account details_.
-
-![Mockup-logo](./documentation/design/mockups/00-COMBO-Account.png)
-
-This view includes a general user account form with all the editable fields the refering to the user. The user can also delete the account and be redirected to the entry point of the app.
-
-On the side bar, the user can access the _app stats_ view that will display the _top 5 reproduced songs_ with a bar chart and the _top 5 reproduced genres_ with a pie chart.
-
-Finally, the user can access a page to update its password inside the _password update_ view. Related to this, if a user tries to log into WaveApp but does not remember the password, there's a link to the reset password view as well in the sign in page.
-
-## Not found 🚫
-
-Due to SEO stats, WaveApp also has a [not found](https://wave-app-dev.herokuapp.com/sign-up/some-unexistant-page) page that shows up every time the user tries to enter an unexistant page or a view using query params that no longer exist.
-
-![Mockup-logo](./documentation/design/mockups/18-Not-found.png)
-
-# 🗺 Project Journey
-
-## Team Objectives 🎯
-
-- Clean & efficient Code
-- Comfortable user experience
-- Safe server side
-- Transparent and fluid team communication
-- Collaborative work
-
-## Organization 📆
+### Organization 📆
 
 In order to achieve all of our goals we have implemented the Scrum Agile Methodology. We divided all the process into separated one week Sprints, everyone of them with their own goals. To manage those sprints we set daily, sprint plannings and review and sprint retrospective meetings. We used Github Projects to divide our sprints, issues and tasks on boards using the Kanban structure. Github projects allowed us to automate and connect those issues with the branches of our repository. We also implemented a code review system in order to get all the team connected with all parts of the project.
 
 ![enter image description here](./documentation/screenshots/gprojects1.jpg)
-
-## Team Convention 🤝
-
-Before starting the code development we created some team conventions in order to establish the best possible work flow. This way, everyone could develop some code and know, at every moment, how they should write the CSS Classes, Id's, React Components, etc. We also made rules for the commits so we could find a concrete branch in case of need.
 
 ## Branch Naming Strategy 🎋
 
