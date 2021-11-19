@@ -1,24 +1,38 @@
-![Preview](./documentation/images/mvst-time-coding-challenge.gif)
+![Preview](./documentation/assets/images/mvst-time-coding-challenge.gif)
 
 # MVST Time Coding Challenge
 
-This repository contains the coding challenge as a part of MVST. job application process.
+## Introduction & requirements
 
-<!-- ## Figma [Figma file](https://www.figma.com/file/zbUncRShPQWo5vZgEmyKHG/WaveApp?node-id=0%3A1) [Cloudinary API](https://cloudinary.com/documentation/image_upload_api_reference#destroy_method) [multer](https://github.com/expressjs/multer) --> <p align="center">
+This repository contains the coding challenge as a part of MVST. job application process, a **full stack** web application developed using React, NodeJs, ExpressJs and MongoDB.
 
-![Mockup-logo](./documentation/design/mockups/00-Logo.png)
+The purpose of this application is to develop a stop watch that users can start & stop using a central button. Once the button is pressed, the time inside the button starts counting and only when the user presses it back, the total counter is refreshed. All time data is stored in a database to persist data.
 
-WaveApp is a streaming music web application where you can share and discover songs, playlists and albums with other users. Built with MongoDB, Express, Node, Laravel, Firebase, Cloudinary and Laravel for the server side, and React, Redux for the client side.
+The application also has a header with MVST. logotype and a switch that allows the user to change the application theme to light or dark.
 
 > Check the deployed version of this challenge [here](https://mvst-coding-challenge.herokuapp.com/)
 
 ## 🚀 Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The following steps will guide you through the essentials you will have to install and run in order to use this repository and build this application in your local machine.
 
 ### Requirements 📋
 
-You need to install [NodeJs](https://nodejs.org/) and [Docker](https://www.docker.com/products/docker-desktop) from their webpages Install Yarn globally: `npm install --global yarn` Once you have installed these programs, you need to create accounts for: - [Firebase](https://firebase.google.com/) - [MongoDB Atlas](https://www.mongodb.com/) - [Cloudinary](https://cloudinary.com/)
+**Node**
+
+The first step to install and run this application is to make sure you have Node installed on your computer. Go to the terminal, type `node -v` and hit enter. If it returns a version number you already have it installed! Otherwise you will need to [install](https://nodejs.org/es/download/) node.
+
+**Yarn**
+
+Also, since this repository is taking advantage of [Yarn](https://yarnpkg.com/) workspaces (both client and server are inside the same repository), first of all you will need to install `yarn` globally on your computer:
+
+```
+npm install -g yarn
+```
+
+**MongoDB Atlas**
+
+[MongoDB Atlas](https://www.mongodb.com/) - [Cloudinary](https://cloudinary.com/)
 
 ### Installation 🔧
 
@@ -28,14 +42,13 @@ First, you will need to `clone` or `fork` the repository into your Github accoun
 $ git clone https://github.com/rocket-team-webdev/wave
 ```
 
-Environment variables
+**Environment variables**
 
 Since
 
 The **client** .env file need to contain the next variables:
 
 ```
-
 REACT_APP_API_ROUTE=https://mvst-coding-challenge-api.herokuapp.com/
 ```
 
@@ -43,7 +56,7 @@ The **server** .env file needs to contain the next variables to connect to [Mong
 
 ```
 # Database connection
-MONGO_DB_URL_PRODUCTION=mongodb+srv://ricard-garcia:mvstchallenge123456@cluster0.z4nte.mongodb.net/mvst-challenge
+MONGO_DB_URL_PRODUCTION=mongodb+srv://username:<password>@cluster0.z4nte.mongodb.net/mvst-challenge
 MONGO_DB_URL_DEVELOPMENT=mongodb://localhost/4000
 MONGO_DB_URL_TEST=mongodb://localhost/4000
 
