@@ -1,0 +1,10 @@
+@use "../../sass/components/colors" as c;
+
+.logo-path {
+  &-light {
+    fill: c.$lightColor;
+  }
+  &-dark {
+    fill: c.$darkColor;
+  }
+}
