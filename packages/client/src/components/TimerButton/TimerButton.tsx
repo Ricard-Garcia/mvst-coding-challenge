@@ -65,6 +65,7 @@ export default function TimerButton({
     <button
       type="button"
       id="timeButton"
+      data-testid="time-button-id"
       className={`d-flex justify-content-center align-items-center mb-5 bg-${secondary} ft-${primary}`}
       onClick={handleCount}
     >

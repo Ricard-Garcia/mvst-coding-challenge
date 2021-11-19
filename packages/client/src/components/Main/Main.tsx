@@ -50,6 +50,7 @@ export default function Main({ isLight }: ThemeProp) {
       {/* Total time */}
       <div
         id="totalTimeWrapper"
+        data-testid="total-time-wrapper"
         className="d-flex flex-column justify-content-center align-items-center"
       >
         {/* Loading conditional */}
