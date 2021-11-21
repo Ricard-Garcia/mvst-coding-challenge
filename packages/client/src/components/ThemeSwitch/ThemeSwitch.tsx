@@ -10,10 +10,12 @@ import { getLocalStorage } from "../../utils/localStorage";
 import "./ThemeSwitch.scss";
 
 export default function ThemeSwitch({ handleTheme }: VoidFunctionProp) {
+  const checkedSwitch = !getLocalStorage("isLight");
+
   return (
     <div id="switchWrapper">
       <Toggle
-        defaultChecked={!getLocalStorage("isLight")}
+        defaultChecked={checkedSwitch}
         className="custom-switch d-flex align-items-center"
         icons={{
           checked: <BsSun className="ft-dark" />,
