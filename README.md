@@ -137,8 +137,6 @@ Also, a `db` folder is defined both to make the connection to the database and c
 
 In order to deploy both client and server workspace this application has used [Heroku](www.heroku.com).
 
-_Bug disclaimer: Heroku broke react-toggle's component defaultChecked prop on build. Working on it._
-
 ## 🗺 Workflow
 
 ### Organization 📆
