@@ -53,7 +53,6 @@ Since this application is consuming a database stored in MongoDB Atlas, you will
 
 **Environment variables**
 
-Since
 
 The **client** .env file need to contain the endpoint pointing at the deployed server. This is where the client is getting the data from the database.
 
