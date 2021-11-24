@@ -94,7 +94,7 @@ yarn server-test
 ### Folder structure 🗂
 
 ```
-├── documentation <i>// All project wireframes, PRD</i>
+├── documentation 
 └── packages <i>// Monorepo workspaces</i>
   └── client <i>// Front end React App</i>
   │ └── src
